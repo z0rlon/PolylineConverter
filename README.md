@@ -19,3 +19,33 @@ Takes an array of vectors and converts it to a string corresponding to the relat
  - The second set has the Y value converted to its corresponding parameter name and subtracts the corresponding threshold value from it as a formula
  - The third set has the same behavior seen in vector set #2 except it now applies to both the X and Y vectors  and you can see that although the Z vectors value changed, it did not meet or exceed its corresponding threshold, thus only shows its current numerical value and not as a function being applied to a parameter
   
+
+## Usage
+Install dependencies:
+```
+pip install -r requirements.txt
+```
+
+Run the converter from the command line:
+```
+python polyline_converter.py -v "(1,1,1),(1,5,1),(5,5,5)" -p 10 10 10 -t 5 5 2
+```
+which outputs:
+```
+(1,1,1),(1,Param2 - 5,1),(Param1 - 5,Param2 - 5,Param3 - 5)
+```
+
+## Graphical UI
+A small Tkinter application is provided for users who prefer a windowed
+interface. Start it with:
+```
+python polyline_gui.py
+```
+
+## Building a standalone executable
+To package the GUI as a single executable, install PyInstaller and run:
+```
+pip install pyinstaller
+pyinstaller --onefile polyline_gui.py
+```
+The resulting binary can be found in the `dist` directory.
